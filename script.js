@@ -32,7 +32,9 @@ class App {
     this.playIntro = document.querySelector('.play-intro');
     this.loaderBar = document.querySelector('.loader');
 
-    this.loader.load('non_existing_file.wav'); // this is dynamically changed by selenium in runtime
+    this.audioUrl = new URLSearchParams(window.location.search).get('audio_url');
+    this.loader.load(this.audioUrl);
+
     this.loader.complete = this.complete.bind(this);
 
     this.count = 0;
@@ -98,7 +100,7 @@ class App {
           this.startRecording();
           setTimeout(() => {
             this.play();
-          }, 4000); // Adjust the delay as needed
+          }, 2000); // Adjust the delay as needed
         }, 2000); // Adjust the delay as needed
       });
   
